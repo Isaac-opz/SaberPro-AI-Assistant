@@ -1,0 +1,12 @@
+numpy==2.1.0
+pandas
+requests
+matplotlib
+ipykernel
+jupyter
+tensorflow
+scikit-learn
+seaborn
+nltk
+wordcloud
+textblob
