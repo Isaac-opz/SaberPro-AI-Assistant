@@ -1,0 +1,78 @@
+Pregunta: ¿En qué fechas se dará inicio al proceso de registro e inscripción a los exámenes?
+Respuesta: Validar en la página www.icfes.gov.co / Evaluaciones y Elija el examen de su interés.
+
+Pregunta:¿Cómo puedo cambiar el correo de notificaciones asociado al usuario PRISMA de mi sede jornada?
+Respuesta:A través del Chat, ingresando a la  página www.icfes.gov.co / Atención y servicios a la ciudadanía / canales de atención / Chat.(Link:https://www.icfes.gov.co/atencion-y-servicios-a-la-ciudadania/canales-de-atencion/)
+
+Pregunta:¿qué debo hacer para presentar las pruebas icfes por segunda vez?
+Respuesta:Se puede registrar las veces que desee, después de la quinta inscripción la tarifa aumenta, validar en  la página www.icfes.gov.co / Evaluaciones y Elija el examen de su interés.
+
+Pregunta:¿El examen saber 11°, entrega certificado o constancia de asistencia? 
+Respuesta:No, únicamente se genera certificado de asistencia para Saber Pro y TyT.
+
+Pregunta:¿Debo pagar las pruebas TyT?
+Respuesta:Valida las tarifas en la página www.icfes.gov.co / Evaluaciones / Saber TyT / Tarifas. (Link:https://www.icfes.gov.co/evaluaciones-icfes/examen-saber-tyt/ y busca tarifaas)
+
+Pregunta:¿A quién esta dirigido el examen Saber TyT?
+Respuesta:Saber TyT está dirigido a estudiantes próximos a graduarse o graduados de programas técnicos y tecnológicos. Validar en la página www.icfes.gov.co / Evaluaciones / Saber TyT.(link:https://www.icfes.gov.co/evaluaciones-icfes/examen-saber-tyt/)
+
+Pregunta:¿Qué debo hacer si fui registrado para las pruebas TyT SENA en convocatorias anteriores, pero no presente las pruebas?
+Respuesta:El registro se debe realizar por medio de la institución, pero el beneficio de pago solo se obtiene en la primera inscripción.
+
+Pregunta:Si cuento con el usuario y contraseña y no permiten ingresar, ¿Qué debo hacer?
+Respuesta:Validar con el programa académico si están correctas, de lo contrario contactarse a las líneas de atención, ingresando a la  página www.icfes.gov.co / Atención y servicios a la ciudadanía / canales de atención, línea nacional Bogotá: (601) 484-1460 o a través del chat. 
+
+Pregunta:¿Cómo puedo consultar mi usuario contraseña temporal ya que no me llegó al correo?
+Respuesta:Validarlo con el programa académico de lo contrario contactarse a las líneas de atención, ingresando a la  página www.icfes.gov.co / Atención y servicios a la ciudadanía / canales de atención, línea nacional Bogotá: (601) 484-1460 o a través del chat. 
+
+Pregunta:¿Cómo puedo consultar mi usuario contraseña temporal?
+Respuesta:Verificar en la base de  datos de los Usuarios y contraseñas cargada en la plataforma del conocimiento. Si al iniciar una convocatoria no se cuenta con la base de usuarios y contraseñas, es necesario validar el caso con el gestor, para confirmar como proceder. 
+
+Pregunta:Si cuenta con el usuario y contraseña y no permiten ingresar ¿Qué debo hacer?
+Respuesta:Consultar en la base de usuario y contraseñas, si los datos están correctos y al realizar las auditorías nos permite ingresar, se orienta al ciudadano como ingresar los datos para realizar la personalización del usuario, que tenga en cuenta las mayúsculas y minúsculas, números e ingresar la información completa. En caso que no permita el ingreso con el usuario y contraseña que está en la base, y verificando que no haya personalizado el usuario, se le debe informar que radique solicitud con el pantallazo del error, adjuntando el documento e indicando el correo electrónico que desea asociar. Para comunicaciones escritas, después de realizar las auditorías correspondientes, se escala el caso a la DTI.
+
+Pregunta:Si al personalizar el usuario me aparece un mensaje que el correo ya está registrado ¿Qué debo hacer?
+Respuesta:Validar en prisma si la ciudadana tiene ese correo asociado a otro documento, en caso de ser así, se le puede indicar que para garantizar el registro ingreso un correo diferente, en caso que informe que no tiene otro correo y que quiere que sea el inicial, se le debe decir que radique petición, adjuntando el documento e informando el correo ya que es unificación de usuarios. Para comunicaciones escritas, después de realizar las auditorías correspondientes, se escala el caso a la DTI.
+
+Pregunta:¿Donde es posible consultar el estado de un estudiante, Autorizado Preinscrito e Inscrito?
+Respuesta:Para confirmar si ya está autorizado o Preinscrito la primera consulta se realizar a través de auditoría de Registro de PRISMA, en caso que se requiera consultar si se encuentra inscritos se debe ingresar por medio de módulo de gestión de PRISMA. En caso de no encontrarlo por PRISMA, se realiza la consulta en la base de datos de los estados publicada en la plataforma del conocimiento.
+
+Pregunta:¿Qué respuesta le entregamos a un ciudadano que solicita corregir los datos registrados durante el proceso de registro al Examen Saber T y T?
+Respuesta:(Estudiantes e individuales): Es importante señalar que, si presenta alguna inconsistencia en el nombre o en el número de documento de identidad, podrá realizar dichas modificaciones durante el proceso de registro a través de la plataforma PRISMA. No obstante, la información sólo podrá ser modificada una vez siempre y cuando esta no supere el 30% de los caracteres. Para realizar los cambios antes mencionados, debe ingresar a la opción modificaciones, seleccionar Corregir nombre, documento o cambio de municipio e ingresar los datos actualizados.
+
+Pregunta:¿Cómo realizar la corrección de datos fuera de las fechas de registro?
+Respuesta:Radicar una solicitud por escrito, adjuntado los documentos pertinentes para la corrección e indicando el dato errado y el dato correcto. Para comunicaciones escritas, después de realizar las auditorías correspondientes, se escala el caso a la DTI.
+
+Pregunta:¿Qué respuesta le entregamos a un ciudadano que manifiesta ser beneficiario (exento de pago) SENA, sin embargo, al ingresar a PRISMA el sistema le genera cobro?  
+Respuesta:Los alumnos reportados como beneficiarios del SENA y que formen parte del convenio para el año 2021-1/2 deben estar registrados como estudiantes exentos de pago por parte de dicha institución. Para verificar esta condición, se debe revisar la base de datos "Listado Aspirantes SENA Responsables y NO Responsables de PAGO". Si al ingresar al sistema se genera un cobro, el estudiante deberá radicar una solicitud por escrito adjuntando el pantallazo del cobro generado. En caso de que el estudiante no se encuentre en la base de beneficiarios o si la base de datos no está disponible, se le debe remitir directamente al SENA, ya que esta institución es la encargada de autorizar su exención de pago.
+
+Pregunta:¿Cómo creo mi usuario único?
+Respuesta:Ingresa a la página www.icfes.gov.co / Ingreso a PRISMA  / Crear Usuario - persona.(Link: https://prisma.icfes.edu.co/prisma-web/pages/administracion/autenticacion/autenticacionIcfes.jsf?faces-redirect=true#No-back-button)
+
+Pregunta:¿Cómo recupero mi usuario único?
+Respuesta:Ingresa a la página www.icfes.gov.co / Ingreso a PRISMA  / ¿Olvidó su usuario?(Link: https://prisma.icfes.edu.co/prisma-web/pages/administracion/autenticacion/autenticacionIcfes.jsf?faces-redirect=true#No-back-button)
+
+Pregunta:¿Cómo recupero mi usuario contraseña?
+Respuesta:Ingresa a la página www.icfes.gov.co / Ingreso a PRISMA  / ¿Olvidó su contraseña?(Link: https://prisma.icfes.edu.co/prisma-web/pages/administracion/autenticacion/autenticacionIcfes.jsf?faces-redirect=true#No-back-button)
+
+Pregunta:Como me preparo para el examen con cuadernillos y ejemplos de preguntas
+Respuesta:Ingresa a la página www.icfes.gov.co / ABC del Saber  / Caja de herramientas (Link: https://www.icfes.gov.co/caja-de-herramientas-saber-pro/)
+
+Pregunta:¿Qué debo hacer si no me haya llegado el usuario y contraseña para poder inscribirme a las pruebas SABER PRO ni al correo institucional ni al personal? 
+Respuesta:Por favor revisar el SPAM del correo electrónico institucional o personal si ya  cuenta con un registro anterior ante el ICFES. 
+
+Pregunta:¿Ya presenté la prueba saber pro que debo hacer? 
+Respuesta:Envía los resultados al Dpto. de Registro académico al correo registroacademico@uao.edu.co  
+
+Pregunta:No permite iniciar el proceso de inscripción  
+Respuesta:Tenga en cuenta las fechas establecidas por el ICFES para el inicio del proceso de inscripción. (Link:https://sitios.uao.edu.co/saberpro/)  
+
+Pregunta:Qué son las pruebas SaberPro? Es lo mismo que el ECAES? 
+Respuesta:Visite el siguiente enlace para solucionar su problema. (Link:https://sitios.uao.edu.co/saberpro/que-son-las-pruebas-saber-pro/)
+
+Pregunta:Cómo accedo a los resultados de las pruebas SaberPro? 
+Respuesta:Visite el siguiente enlace para solucionar su problema. (Link:https://www.icfes.gov.co/evaluaciones-icfes/resultados/)
+
+Pregunta:La universidad ofrece talleres de preparación para las pruebas SaberPro? 
+Respuesta:Visite el siguiente enlace para solucionar su problema. (Link:https://sitios.uao.edu.co/saberpro/)
+

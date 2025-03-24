@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "icfes pro"
+version = "0.1.0"
+description = ""
+authors = ["santiago-04 <santiago.gomez.castro.04@gmial.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+numpy = "2.1.0"
+pandas = "^2.2.3"
+requests = "^2.32.3"
+matplotlib = "^3.10.1"
+ipykernel = "^6.29.5"
+jupyter = "^1.1.1"
+tensorflow = "^2.18.1"
+scikit-learn = "^1.6.1"
+seaborn = "^0.13.2"
+nltk = "^3.9.1"
+wordcloud = "^1.9.4"
+textblob = "^0.19.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
