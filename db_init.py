@@ -1,10 +1,15 @@
 import chromadb
 import os
 import logging
+from chromadb.utils.embedding_functions import SentenceTransformerEmbeddingFunction
 
 # --- Configuración de Logging ---
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
+
+# --- Configuración de Embedding Function ---
+embedding_fn = SentenceTransformerEmbeddingFunction(model_name="intfloat/multilingual-e5-base")
+logger.info(f"Usando modelo de embedding: {embedding_fn.model_name}")
 
 # --- 1. Carga y Preparación de Datos desde Archivo ---
 data_file = "saber_pro_data.txt"
@@ -70,7 +75,10 @@ collection_name = "preguntas_frecuentes_saberpro"
 # Crear la colección (o recuperarla si existe)
 logger.info(f"Intentando obtener o crear la colección: '{collection_name}'")
 try:
-    collection = client.get_or_create_collection(name=collection_name)
+    collection = client.get_or_create_collection(
+        name=collection_name,
+        embedding_function=embedding_fn
+    )
     logger.info(f"Colección '{collection_name}' lista.")
 except Exception as e:
      logger.error(f"Error al obtener/crear la colección ChromaDB '{collection_name}': {e}", exc_info=True)
@@ -100,8 +108,9 @@ if new_ids_to_add:
     logger.info(f"Añadiendo {len(new_ids_to_add)} nuevos documentos a la colección '{collection_name}'...")
     try:
         collection.add(
-            documents=new_docs_to_add,
-            ids=new_ids_to_add
+        documents=new_docs_to_add,
+        ids=new_ids_to_add,
+        metadatas=[{"instruction": "Representación para recuperación"}] * len(new_docs_to_add)
         )
         logger.info("Nuevos documentos añadidos con éxito.")
     except Exception as e:
@@ -119,7 +128,7 @@ except Exception as e:
 
 # --- 4. Consultar la Colección (Ejemplo) ---
 # Realizar una consulta de ejemplo para verificar que funciona
-query_text = ["¿Qué hago si olvidé mi contraseña de PRISMA?"]
+query_text = ["query: ¿Qué hago si olvidé mi contraseña de PRISMA?"]
 
 logger.info(f"\nRealizando consulta de ejemplo con: '{query_text[0]}'")
 try:
@@ -134,7 +143,7 @@ try:
             logger.info(f"Resultado {i+1}:")
             # Imprime solo una parte del documento
             preview = (doc[:250] + '...') if len(doc) > 250 else doc
-            logger.info(f"  Texto (preview): {preview.replace(os.linesep, ' ')}") # Reemplaza saltos de línea para preview
+            logger.info(f"  Texto (preview): {preview.replace(os.linesep, ' ')}")
             # logger.info(f"  Distancia: {results['distances'][0][i]}")
             # logger.info(f"  ID: {results['ids'][0][i]}")
             logger.info("-" * 20)

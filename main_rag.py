@@ -8,6 +8,7 @@ from websockets.exceptions import ConnectionClosed, ConnectionClosedOK
 from starlette.websockets import WebSocketState
 
 import chromadb
+from chromadb.utils.embedding_functions import SentenceTransformerEmbeddingFunction
 import json
 import uvicorn
 import logging
@@ -20,12 +21,14 @@ logger = logging.getLogger(__name__)
 
 # --- Configuración del LLM ---
 ENDPOINT = "http://127.0.0.1:39281/v1"
-MODEL = "aya-expanse:8b"
+MODEL = "llama3.2:3b"
 
 # --- Configuración de ChromaDB (DB Vectorial) ---
 # Cliente PERSISTENTE para que los datos no se pierdan.
 db_directory = "chroma_db_saberpro"
 db_path = os.path.abspath(db_directory)
+embedding_fn = SentenceTransformerEmbeddingFunction(model_name="intfloat/multilingual-e5-base")
+logger.info(f"Usando embedding function en retrieval: {embedding_fn.model_name}")
 
 if not os.path.exists(db_path):
     try:
@@ -49,7 +52,10 @@ except Exception as e:
 collection_name = "preguntas_frecuentes_saberpro"
 
 try:
-    collection = db_client.get_or_create_collection(name=collection_name)
+    collection = db_client.get_or_create_collection(
+    name=collection_name,
+    embedding_function=embedding_fn
+    )
     logger.info(f"Conectado/Obtenido colección ChromaDB: '{collection_name}'")
 
     # Verifica cuántos documentos hay en la colección.
@@ -232,7 +238,7 @@ async def process_messages( messages: list, websocket: WebSocket, system_prompt:
     try:
         # Consulta a ChromaDB para encontrar los fragmentos más similares al mensaje del usuario.
         results = collection.query(
-            query_texts=[last_user_message],
+            query_texts=[f"query: {last_user_message}"],
             n_results=2,
             include=["documents", "distances"]
         )

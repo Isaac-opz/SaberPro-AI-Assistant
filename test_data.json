@@ -1,0 +1,79 @@
+[
+  {
+    "query": "¿Cuando es el día de inscripción al ICFES?",
+    "relevant_ids": [
+      "saberpro_faq_1"
+    ],
+    "reference": "Visita la página www.icfes.gov.co en el apartado de Evaluaciones y Elija el examen de su interés."
+  },
+  {
+    "query": "¿Que hago si no tengo el correo con el que me inscribí al ICFES?",
+    "relevant_ids": [
+      "saberpro_faq_2"
+    ],
+    "reference": "Ingresa a la  página www.icfes.gov.co / Atención y servicios a la ciudadanía / canales de atención / Chat. O al siguiente enlace:(Link:https://www.icfes.gov.co/atencion-y-servicios-a-la-ciudadania/canales-de-atencion/)"
+  },
+  {
+    "query": "¿Que pasa si me ya me inscribí varias veces al ICFES anteriormente?",
+    "relevant_ids": [
+      "saberpro_faq_3"
+    ],
+    "reference": "Te puedes registrar las veces que quieras, pero después de la quinta inscripción la tarifa aumenta, Puedes verificarlo visitando el siguiente enlace: www.icfes.gov.co / en el apartado dee Evaluaciones y Elija el examen de su interés."
+  },
+  {
+    "query": "¿Dónde puedo descargar el certificado de asistencia del examen?",
+    "relevant_ids": [
+      "saberpro_faq_4"
+    ],
+    "reference": "No, únicamente se genera certificado de asistencia para Saber Pro y TyT."
+  },
+  {
+    "query": "¿Cuanto cuesta la inscripción del ICFES?",
+    "relevant_ids": [
+      "saberpro_faq_5"
+    ],
+    "reference": "Visita el siguiente enlace para validar las tarifas www.icfes.gov.co / Evaluaciones / Saber TyT / Tarifas. (Link:https://www.icfes.gov.co/evaluaciones-icfes/examen-saber-tyt/ y busca tarifaas)"
+  },
+  {
+    "query": "¿Para quienes es dirigido el examen saber TyT?",
+    "relevant_ids": [
+      "saberpro_faq_6"
+    ],
+    "reference": "Saber TyT está dirigido a estudiantes próximos a graduarse o graduados de programas técnicos y tecnológicos. Visita el siguiente enlace www.icfes.gov.co > Evaluaciones > Saber TyT para conocer más.(link:https://www.icfes.gov.co/evaluaciones-icfes/examen-saber-tyt/)"
+  },
+  {
+    "query": "¿Que hago si antes me había registrado a las anteriores convocatorias del examen ICFES y no me presente?",
+    "relevant_ids": [
+      "saberpro_faq_7"
+    ],
+    "reference": "El registro se debe realizar por medio de la institución, pero el beneficio de pago solo se obtiene en la primera inscripción."
+  },
+  {
+    "query": "¿Que puedo hacer si no tengo el usuario ni contraseña del ICFES?",
+    "relevant_ids": [
+      "saberpro_faq_8"
+    ],
+    "reference": "Visita las oficinas de tu programa académico para revisar si están correctas, de lo contrario Seguir los siguientes pasos: Visita la pagina www.icfes.gov.co > Atención y servicios a la ciudadanía > canales de atención, línea nacional Bogotá: (601) 484-1460 o a través del chat."
+  },
+  {
+    "query": "¿Que debo hacer si olvide mi usuario y contraseña del ICFES?",
+    "relevant_ids": [
+      "saberpro_faq_9"
+    ],
+    "reference": "Validarlo con el programa académico de lo contrario contactarse a las líneas de atención, ingresando a la  página www.icfes.gov.co > Atención y servicios a la ciudadanía > canales de atención, línea nacional Bogotá: (601) 484-1460 o a través del chat."
+  },
+  {
+    "query": "¿Como consulto mi usuario ni contraseña temporal del ICFES?",
+    "relevant_ids": [
+      "saberpro_faq_10","saberpro_faq_11"
+    ],
+    "reference": "Puedes revisar la base de datos de usuarios y contraseñas que está en la plataforma. Si al comenzar la convocatoria no encuentras esa información, lo mejor es contactar al gestor para que te indique cómo seguir con el proceso."
+  },
+  {
+    "query": "Si tengo el usuario y contraseña correctos pero la plataforma me devuelve que son incorrectos",
+    "relevant_ids": [
+      "saberpro_faq_11", "saberpro_faq_10"
+    ],
+    "reference": "Primero revisa que los datos de usuario y contraseña estén correctos en la base. Si al hacer las pruebas todo funciona, te indicamos cómo ingresar bien la información, recordando que debes escribir exactamente como aparece, respetando mayúsculas, minúsculas y números. Si aun así no puedes ingresar, y no has personalizado tu usuario, lo mejor es que envíes una solicitud incluyendo un pantallazo del error, una copia de tu documento y el correo que deseas asociar. Después de revisar todo, el caso se puede escalar al área de tecnología (DTI) si es necesario."
+  }
+]
