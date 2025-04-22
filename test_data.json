@@ -65,15 +65,262 @@
   {
     "query": "¿Como consulto mi usuario ni contraseña temporal del ICFES?",
     "relevant_ids": [
-      "saberpro_faq_10","saberpro_faq_11"
+      "saberpro_faq_10",
+      "saberpro_faq_11"
     ],
     "reference": "Puedes revisar la base de datos de usuarios y contraseñas que está en la plataforma. Si al comenzar la convocatoria no encuentras esa información, lo mejor es contactar al gestor para que te indique cómo seguir con el proceso."
   },
   {
     "query": "Si tengo el usuario y contraseña correctos pero la plataforma me devuelve que son incorrectos",
     "relevant_ids": [
-      "saberpro_faq_11", "saberpro_faq_10"
+      "saberpro_faq_11",
+      "saberpro_faq_10"
     ],
     "reference": "Primero revisa que los datos de usuario y contraseña estén correctos en la base. Si al hacer las pruebas todo funciona, te indicamos cómo ingresar bien la información, recordando que debes escribir exactamente como aparece, respetando mayúsculas, minúsculas y números. Si aun así no puedes ingresar, y no has personalizado tu usuario, lo mejor es que envíes una solicitud incluyendo un pantallazo del error, una copia de tu documento y el correo que deseas asociar. Después de revisar todo, el caso se puede escalar al área de tecnología (DTI) si es necesario."
+  },
+  {
+    "query": "¿Qué hago si el usuario y contraseña es enviado a un correo antiguo donde no tengo la contraseña?",
+    "relevant_ids": [
+      "saberpro_faq_12"
+    ],
+    "reference": "Verificar en prisma si tiene ese correo asociado a otro documento, en caso de que sea asi, visitar las oficinas de tu programa academico para solicitar ayuda."
+  },
+  {
+    "query": "¿Donde puedo consultar mi estado, si estoy, autorizado preinscrito e inscrito?",
+    "relevant_ids": [
+      "saberpro_faq_13"
+    ],
+    "reference": "Para confirmar si ya está autorizado o Preinscrito la primera consulta se realizar a través de auditoría de Registro de PRISMA, en caso que se requiera consultar si se encuentra inscritos se debe ingresar por medio de módulo de gestión de PRISMA. En caso de no encontrarlo por PRISMA, realiza la consulta en la base de datos de los estados publicada en la plataforma del conocimiento."
+  },
+  {
+    "query": "¿Cómo puedo corregir mis datos durante el proceso de registro al Examen Saber TyT?",
+    "relevant_ids": [
+      "saberpro_faq_14"
+    ],
+    "reference": "Si presenta alguna inconsistencia en el nombre o en el número de documento de identidad, podrá realizar modificaciones durante el proceso de registro a través de la plataforma PRISMA. No obstante, la información sólo podrá ser modificada una vez siempre y cuando esta no supere el 30% de los caracteres. Para realizar los cambios antes mencionados, debe ingresar a la opción modificaciones, seleccionar Corregir nombre, documento o cambio de municipio e ingresar los datos actualizados."
+  },
+  {
+    "query": "¿Cómo puedo corregir mis datos?",
+    "relevant_ids": [
+      "saberpro_faq_15"
+    ],
+    "reference": "Radicar una solicitud por escrito, adjuntado los documentos pertinentes para la corrección e indicando el dato errado y el dato correcto. Para comunicaciones escritas, después de realizar las auditorías correspondientes, se escala el caso a la DTI."
+  },
+  {
+    "query": "¿Cuánto vale presentar el examen Saber Pro?",
+    "relevant_ids": [
+      "saberpro_faq_16"
+    ],
+    "reference": "Si eres beneficiario del SENA, deberías estar registrado como exento de pago. Para confirmar esto, se revisa una base de datos llamada “Listado Aspirantes SENA Responsables y NO Responsables de PAGO”. Si al entrar al sistema te aparece un cobro, debes hacer una solicitud por escrito adjuntando el pantallazo del cobro. En caso de que no estés en la base de beneficiarios o esta no esté disponible, tendrás que comunicarte directamente con el SENA, ya que ellos son quienes aprueban si te exoneran del pago o no."
+  },
+  {
+    "query": "¿Cómo creo mi usuario único?",
+    "relevant_ids": [
+      "saberpro_faq_17"
+    ],
+    "reference": "Ingresa a la página www.icfes.gov.co > Ingreso a PRISMA  > Crear Usuario - persona.(Link: https://prisma.icfes.edu.co/prisma-web/pages/administracion/autenticacion/autenticacionIcfes.jsf?faces-redirect=true#No-back-button)"
+  },
+  {
+    "query": "¿cómo recupero mi usuario?",
+    "relevant_ids": [
+      "saberpro_faq_18"
+    ],
+    "reference": "Ingresa a la página www.icfes.gov.co > Ingreso a PRISMA > ¿Olvidó su usuario?(Link: https://prisma.icfes.edu.co/prisma-web/pages/administracion/autenticacion/autenticacionIcfes.jsf?faces-redirect=true#No-back-button)"
+  },
+  {
+    "query": "¿Cómo recupero mi usuario y contraseña?",
+    "relevant_ids": [
+      "saberpro_faq_19"
+    ],
+    "reference": "Ingresa a la página www.icfes.gov.co > Ingreso a PRISMA > ¿Olvidó su contraseña?(Link: https://prisma.icfes.edu.co/prisma-web/pages/administracion/autenticacion/autenticacionIcfes.jsf?faces-redirect=true#No-back-button)"
+  },
+  {
+    "query": "¿Como me preparo para el examen con cuadernillos?",
+    "relevant_ids": [
+      "saberpro_faq_20"
+    ],
+    "reference": "Ingresa a la página www.icfes.gov.co > ABC del Saber > Caja de herramientas (Link: https://www.icfes.gov.co/caja-de-herramientas-saber-pro/)"
+  },
+  {
+    "query": "¿Qué debo hacer si no me ha llegado el usuario y contraseña para poder inscribirme?",
+    "relevant_ids": [
+      "saberpro_faq_21"
+    ],
+    "reference": "Por favor revisar el SPAM del correo electrónico institucional o personal si ya \ncuenta con un registro anterior ante el ICFES. Si no se encuentra en el SPAM \nescribe un correo a la Secretaría académica de tu facultad."
+  },
+  {
+    "query": "¿Ya presenté la prueba saber pro que debo hacer?",
+    "relevant_ids": [
+      "saberpro_faq_22"
+    ],
+    "reference": "Envía los resultados al Dpto. de Registro académico al correo: registroacademico@uao.edu.co"
+  },
+  {
+    "query": "¿Qué hago si no me deja inciar el proceso de incrpción?",
+    "relevant_ids": [
+      "saberpro_faq_23"
+    ],
+    "reference": "Tenga en cuenta las fechas establecidas por el ICFES para el inicio del proceso de inscripción. (Link:https://sitios.uao.edu.co/saberpro/)"
+  },
+  {
+    "query": "¿Qué son las pruebas saberpro? es lo mismo que el ecaes??",
+    "relevant_ids": [
+      "saberpro_faq_24"
+    ],
+    "reference": "En el siguiente enlace encontrará toda la información correspondiente a la prueba. (Link:https://sitios.uao.edu.co/saberpro/que-son-las-pruebas-saber-pro/)"
+  },
+  {
+    "query": "¿Cómo accedo a los resultados de las pruebas saberpro??",
+    "relevant_ids": [
+      "saberpro_faq_25"
+    ],
+    "reference": "En el enlace podra encontrar los resultados. (Link:https://www.icfes.gov.co/evaluaciones-icfes/resultados/)"
+  },
+  {
+    "query": "¿Hay talleres o material para estudiar el Saber Pro?",
+    "relevant_ids": [
+      "saberpro_faq_26"
+    ],
+    "reference": "Si, la Vicerrectoría académica ofrece talleres, para más información puede escribir al correo electrónico ccollazos@uao.edu.co. (Link:https://sitios.uao.edu.co/saberpro/)"
+  },
+  {
+    "query": "¿Hay un paso a paso para inscribirme al Saber Pro?",
+    "relevant_ids": [
+      "saberpro_faq_27"
+    ],
+    "reference": "Si, en el siguiente video puede encontrar un paso a paso diseñado por el ICFES para realizar el proceso de inscripción y pago. (Link:https://youtu.be/sei3LpQ0n4E?si=VHcB2Srh4Z6N6ZR-)"
+  },
+  {
+    "query": "¿Cuántas veces al año el icfes programa procesos para pruebas saberpro?",
+    "relevant_ids": [
+      "saberpro_faq_28"
+    ],
+    "reference": "Las pruebas Saber Pro se aplican dos veces al año, en el segundo y cuarto trimestre, según el ICFES. Las fechas de aplicación se fijan anualmente mediante resolución."
+  },
+  {
+    "query": "¿En qué momento estoy habilitado para presentar las pruebas saberpro?",
+    "relevant_ids": [
+      "saberpro_faq_29"
+    ],
+    "reference": "La prueba está dirigida a estudiantes que han aprobado el 75% de los créditos de sus respectivos programas de formación universitaria profesional."
+  },
+  {
+    "query": "¿Dónde encuentro el calendario del icfes para las pruebas saberpro??",
+    "relevant_ids": [
+      "saberpro_faq_30"
+    ],
+    "reference": "Puede encontrar la información en la página web de la Universidad (Link:https://sitios.uao.edu.co/saberpro/)  y en la del ICFES (Link:https://www.icfes.gov.co/) ."
+  },
+  {
+    "query": "¿Puedo hacer el examen Saber Pro en otra ciudad?",
+    "relevant_ids": [
+      "saberpro_faq_31"
+    ],
+    "reference": "Sí, puedes presentar la prueba Saber Pro en otra ciudad si seleccionas la ciudad de tu preferencia en el proceso de registro"
+  },
+  {
+    "query": "¿Qué debo hacer para presentar las pruebas saberpro si me encuentro en el exterior??",
+    "relevant_ids": [
+      "saberpro_faq_32"
+    ],
+    "reference": "Para presentar la prueba en el exterior debe indicar a la Secretaría académica de su facultad sobre la necesidad y lo mismo que, indicar el país y ciudad en la cual reside para la fecha establecida de presentación de la prueba."
+  },
+  {
+    "query": "Qué hago si el Icfes me envió el usuario y contraseña a un correo electrónico que ya no utilizo?",
+    "relevant_ids": [
+      "saberpro_faq_33"
+    ],
+    "reference": "Ingrese a la pagina del ICFES en PQRSDF indicando el problema. (Link:https://www.icfes.gov.co/atencion-y-servicios-a-la-ciudadania/pqrsdf-y-otrostramites/)"
+  },
+  {
+    "query": "¿Cuándo debo hacer un PQRSDF al ICFES?",
+    "relevant_ids": [
+      "saberpro_faq_34"
+    ],
+    "reference": "Cuando tenga problemas con el correo electrónico asignado como usuario, cuando tenga inconvenientes con datos personales, cuando no le permita ingresar con la clave asignada por el ICFES, cuando tenga problemas con pago de la prueba."
+  },
+  {
+    "query": "¿Frente a qué circunstancias la universidad me apoya en montar la pqrs ante el icfes??",
+    "relevant_ids": [
+      "saberpro_faq_35"
+    ],
+    "reference": "Cuando hay error entre el documento registrado en el ICFES y los apellidos o nombres, cuando hay error en la asignación del programa o cualquier otro inconveniente con datos personales."
+  },
+  {
+    "query": "¿Cómo identifico que no me estoy inscribiendo de manera individual?",
+    "relevant_ids": [
+      "saberpro_faq_36"
+    ],
+    "reference": "Cuando ingrese de click en “inscripción” y verifique que tenga un proceso de inscripción actual y dele “Continuar inscripción”"
+  },
+  {
+    "query": "Que hago si ya tengo una referencia de pago generada y no me deja pagar?",
+    "relevant_ids": [
+      "saberpro_faq_37"
+    ],
+    "reference": "Comuniquese con la Secretaría académica de su Facultad para que anule la referencia generada y le permita generar una nueva."
+  },
+  {
+    "query": "¿No puedo presentar las pruebas en esta oportunidad, puedo esperar hasta el semestre siguiente?",
+    "relevant_ids": [
+      "saberpro_faq_38"
+    ],
+    "reference": "Si, solo tenga en cuenta que la presentación de la prueba es requisito de grado."
+  },
+  {
+    "query": "El nombre o apellido que aparece en el registro que hizo la universidad no es incorrecto.  Comó lo arreglo?",
+    "relevant_ids": [
+      "saberpro_faq_39"
+    ],
+    "reference": "Envié un correo electrónico a la Secretaría académica de su Facultad, en el cual manifieste el error, adicionalmente adjunte una copia de su cédula de ciudadanía."
+  },
+  {
+    "query": "El numero de identidad que registro la universidad es el incorrecto, ¿como lo cambio?",
+    "relevant_ids": [
+      "saberpro_faq_40"
+    ],
+    "reference": "Envié un correo electrónico a la Secretaría académica de su Facultad, en el cual manifieste el error, adicionalmente adjunte una copia de su cédula de ciudadanía. En caso de no saber el correo hable con su direcctor de programa."
+  },
+  {
+    "query": "¿Por dónde puedo consultar la fecha, hora y lugar en debo presentar las pruebas saberpro??",
+    "relevant_ids": [
+      "saberpro_faq_41"
+    ],
+    "reference": "Primero revise la fecha publicada en las citaciones, una vez verificada puede ingresar al siguiente enlace (Link:https://citacion.icfes.edu.co/citacionweb/pages/citacion/reportes/consultarCitacionIndividual.jsf#No-back-button)  En este enlace encuentra el paso a paso: (Link:https://www.youtube.com/watch?v=phZ0gIH12Uw)"
+  },
+  {
+    "query": "¿Dónde puedo descargar el certificado de asistencia del examen?",
+    "relevant_ids": [
+      "saberpro_faq_42"
+    ],
+    "reference": "Los certificados del examen pueden ser consultados a partir de la fecha indicada en el cronograma de cada aplicación, para consultar su certificado siga el enlace: Enlace para consultar el certificado.  Para recibir su certificado de presentación del examen debe haber asistido a todas las sesiones a las que fue citado.  (Link:Icfes.gov.co)"
+  },
+  {
+    "query": "¿Si no logré inscribirme en el periodo ordinario tengo otra alternativa para inscribirme a las pruebas saberpro??",
+    "relevant_ids": [
+      "saberpro_faq_43"
+    ],
+    "reference": "Si, existe una fecha establecida para el registro y recaudo extraordinario, puede consultar el calendario en el siguiente enlace: (Link:https://www.icfes.gov.co/)"
+  },
+  {
+    "query": "¿A dónde debo hacer llegar los resultados de las pruebas saberpro para cumplir con este requisito para grado??",
+    "relevant_ids": [
+      "saberpro_faq_44"
+    ],
+    "reference": "Deberá enviar al Departamento de Registro académico los resultados para que estos sean ingresados al sistema.  El correo electrónico es: registroacademico@uao.edu.co"
+  },
+  {
+    "query": "¿A quién en mi facultad debo acudir para que me oriente si tengo alguna duda que no esté relacionada aqui??",
+    "relevant_ids": [
+      "saberpro_faq_45"
+    ],
+    "reference": "Puede comunicarse con la Secretaría académica de su facultad. Facultad de Administración: secretariafca@uao.edu.co Facultad de Ingeniería y Ciencias Básicas: Ing_secretaria_acade@uao.edu.co Facultad de Comunicación Social, Humanidades y Artes: secreacadcom@uao.edu.co Facultad de Arquitectura, Urbanismo y Diseño: secretariaacadfad@uao.edu.co"
+  },
+  {
+    "query": "¿Cómo me inscribo a las pruebas??",
+    "relevant_ids": [
+      "saberpro_faq_46"
+    ],
+    "reference": "En el siguiente video puede encontrar un paso a paso diseñado por el ICFES para realizar el proceso de inscripción y pago. (Link:https://youtu.be/sei3LpQ0n4E?si=VHcB2Srh4Z6N6ZR-)"
   }
 ]
