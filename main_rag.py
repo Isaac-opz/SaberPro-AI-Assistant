@@ -3,7 +3,7 @@
 from fastapi import FastAPI, Request, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
-from openai import AsyncOpenAI
+from google.generativeai import GenerativeModel, configure, types
 from websockets.exceptions import ConnectionClosed, ConnectionClosedOK
 from starlette.websockets import WebSocketState
 
@@ -13,6 +13,7 @@ import json
 import uvicorn
 import logging
 import os
+from dotenv import load_dotenv
 
 # --- Configuración de Logging ---
 LOG_LEVEL = logging.DEBUG
@@ -20,8 +21,15 @@ logging.basicConfig(level=LOG_LEVEL, format='%(asctime)s - %(name)s - %(levelnam
 logger = logging.getLogger(__name__)
 
 # --- Configuración del LLM ---
-ENDPOINT = "http://127.0.0.1:39281/v1"
-MODEL = "llama3.2:3b"
+load_dotenv()
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+if not GOOGLE_API_KEY:
+    logger.error("No se encontró la variable de entorno GOOGLE_API_KEY")
+    exit()
+
+# Configurar Gemini
+configure(api_key=GOOGLE_API_KEY)
+MODEL = "gemini-2.0-flash"
 
 # --- Configuración de ChromaDB (DB Vectorial) ---
 # Cliente PERSISTENTE para que los datos no se pierdan.
@@ -91,15 +99,12 @@ Eres un asistente virtual experto en responder preguntas sobre las pruebas Saber
 A continuación se presenta el contexto relevante recuperado de la base de datos para la consulta actual:
 """
 
-# --- Cliente compatible con API OpenAI ---
+# --- Cliente Gemini ---
 try:
-    llm_client = AsyncOpenAI(
-        base_url=ENDPOINT,
-        api_key="not-needed" # server local, no se necesita clave
-    )
-    logger.info(f"Cliente OpenAI (Async) configurado para endpoint: {ENDPOINT} y modelo por defecto: {MODEL}")
+    model = GenerativeModel(MODEL)
+    logger.info(f"Cliente Gemini configurado con modelo: {MODEL}")
 except Exception as e:
-    logger.error(f"Error al configurar el cliente AsyncOpenAI para {ENDPOINT}: {e}", exc_info=True)
+    logger.error(f"Error al configurar el cliente Gemini: {e}", exc_info=True)
     exit()
 
 # --- Configuración de FastAPI (Server Web) ---
@@ -316,28 +321,21 @@ async def process_messages( messages: list, websocket: WebSocket, system_prompt:
 
     # --- 3. Generación (Generate) ---
     try:
-        # Prepara los parámetros para la llamada a la API de Chat Completions del LLM.
-        completion_payload = {
-            "model": MODEL,
-            "messages": prompt_messages,
-            "stream": True, #Streaming, para recibir la respuesta palabra por palabra.
-            # Parámetros de generación: ajusta según el modelo y el resultado deseado.
-            "temperature": 0.2,
-            "top_p": 0.9,     
-            # "max_tokens": 300
-        }
+        chat = model.start_chat(history=[])
+        
+        response = chat.send_message(
+            final_system_prompt + "\n\n" + last_user_message,
+            stream=True,
+            generation_config=types.GenerationConfig(
+                temperature=0.2,
+                top_p=0.9,
+            )
+        )
 
-        logger.info(f"Enviando solicitud al LLM (modelo: {MODEL}, temp: {completion_payload['temperature']})...")
-        # Realiza la llamada asíncrona al LLM para obtener la respuesta por streaming.
-        response_stream = await llm_client.chat.completions.create(**completion_payload)
-
-        async for chunk in response_stream:
-            # Extrae el contenido del fragmento actual.
-            content = chunk.choices[0].delta.content if chunk.choices and chunk.choices[0].delta else None
-            if content:
-                # Si hay contenido, lo envía inmediatamente al cliente a través del WebSocket.
-                if not await safe_send_json(websocket, { "action": "append_system_response", "content": content }):
-                    # Si safe_send_json retorna False, significa que el cliente se desconectó.
+        # Stream la respuesta al cliente
+        for chunk in response:
+            if chunk.text:
+                if not await safe_send_json(websocket, { "action": "append_system_response", "content": chunk.text }):
                     logger.warning("Interrumpiendo streaming de respuesta LLM porque el cliente se desconectó.")
                     break
 
