@@ -10,3 +10,10 @@ seaborn
 nltk
 wordcloud
 textblob
+fastapi
+uvicorn
+chromadb
+sentence-transformers
+google-generativeai
+python-dotenv
+websockets
