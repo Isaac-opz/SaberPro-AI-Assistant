@@ -33,8 +33,27 @@ MODEL = "gemini-2.0-flash"
 
 # --- Configuración de ChromaDB (DB Vectorial) ---
 # Cliente PERSISTENTE para que los datos no se pierdan.
-db_directory = "chroma_db_saberpro"
-db_path = os.path.abspath(db_directory)
+# db_directory = "chroma_db_saberpro" # Comenta o elimina esta línea
+# db_path = os.path.abspath(db_directory) # Comenta o elimina esta línea
+
+CHROMA_DB_PATH_DEFAULT = "chroma_db_saberpro"
+DB_MOUNT_PATH = os.getenv("CHROMADB_PATH_ON_RENDER")
+
+if DB_MOUNT_PATH:
+    db_path = DB_MOUNT_PATH # Usar la ruta del disco persistente
+    logger.info(f"Usando ruta de ChromaDB desde CHROMADB_PATH_ON_RENDER: {db_path}")
+else:
+    db_path = os.path.abspath(CHROMA_DB_PATH_DEFAULT) # Fallback para desarrollo local
+    logger.info(f"CHROMADB_PATH_ON_RENDER no está configurada. Usando ruta local por defecto: {db_path}")
+
+# Asegúrate que el directorio exista (especialmente importante para el script de init)
+if not os.path.exists(db_path):
+    try:
+        os.makedirs(db_path)
+        logger.info(f"Directorio para ChromaDB creado en: {db_path}")
+    except OSError as e:
+        logger.error(f"Error CRÍTICO al crear el directorio para ChromaDB en {db_path}: {e}")
+        exit()
 embedding_fn = SentenceTransformerEmbeddingFunction(model_name="intfloat/multilingual-e5-base")
 logger.info(f"Usando embedding function en retrieval: {embedding_fn.model_name}")
 
@@ -95,6 +114,7 @@ Eres un asistente virtual experto en responder preguntas sobre las pruebas Saber
 7.  No menciones que eres un modelo de lenguaje, ia o un bot. Eres un asistente para consultas de Saber Pro.
 8.  Asegúrate de que las url en el contexto estén completas y sean accesibles. Si el contexto menciona un enlace, asegúrate de que esté bien formateado y sea funcional.
 9.  Asegúrate de dar respuestas completas y autoconclusivas. No dejes respuestas a medias o incompletas.
+10. Si la pregunta del usuario no está relacionada con las pruebas Saber Pro o con temas oficiales del ICFES, responde educadamente que esa consulta no pertenece a tu área de especialización y que estás diseñado únicamente para brindar asistencia sobre los exámenes Saber Pro del ICFES.
 
 A continuación se presenta el contexto relevante recuperado de la base de datos para la consulta actual:
 """

@@ -51,8 +51,27 @@ except Exception as e:
 # --- 2. Configuración de ChromaDB ---
 # Cliente PERSISTENTE para que los datos no se pierdan.
 # Misma ruta usada en main_rag.py
-db_directory = "chroma_db_saberpro"
-db_path = os.path.abspath(db_directory)
+# db_directory = "chroma_db_saberpro"
+# db_path = os.path.abspath(db_directory)
+
+# variable de entorno para render, con fallback a la ruta local para desarrollo
+CHROMA_DB_PATH_DEFAULT = "chroma_db_saberpro"
+DB_MOUNT_PATH = os.getenv("CHROMADB_PATH_ON_RENDER")
+
+if DB_MOUNT_PATH:
+    db_path = DB_MOUNT_PATH # Usa la ruta del disco persistente
+    logger.info(f"Usando ruta de ChromaDB desde CHROMADB_PATH_ON_RENDER: {db_path}")
+else:
+    db_path = os.path.abspath(CHROMA_DB_PATH_DEFAULT) # Fallback para desarrollo local
+    logger.info(f"CHROMADB_PATH_ON_RENDER no está configurada. Usando ruta local por defecto: {db_path}")
+
+if not os.path.exists(db_path):
+    try:
+        os.makedirs(db_path)
+        logger.info(f"Directorio para ChromaDB creado en: {db_path}")
+    except OSError as e:
+        logger.error(f"Error CRÍTICO al crear el directorio para ChromaDB en {db_path}: {e}")
+        exit()
 logger.info(f"Usando cliente ChromaDB persistente en: {db_path}")
 
 if not os.path.exists(db_path):
