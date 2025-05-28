@@ -1,5 +1,3 @@
-# main_rag.py - Versión Corregida (Fix ChromaDB include)
-
 from fastapi import FastAPI, Request, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
@@ -32,74 +30,58 @@ configure(api_key=GOOGLE_API_KEY)
 MODEL = "gemini-2.0-flash"
 
 # --- Configuración de ChromaDB (DB Vectorial) ---
-# Cliente PERSISTENTE para que los datos no se pierdan.
-# db_directory = "chroma_db_saberpro" # Comenta o elimina esta línea
-# db_path = os.path.abspath(db_directory) # Comenta o elimina esta línea
+CHROMA_DB_FOLDER_IN_REPO = "chroma_db_saberpro"
+db_path = os.path.abspath(CHROMA_DB_FOLDER_IN_REPO)
 
-CHROMA_DB_PATH_DEFAULT = "chroma_db_saberpro"
-DB_MOUNT_PATH = os.getenv("CHROMADB_PATH_ON_RENDER")
+logger.info(f"Intentando acceder a la base de datos ChromaDB pre-construida desde el repositorio en: {db_path}")
 
-if DB_MOUNT_PATH:
-    db_path = DB_MOUNT_PATH # Usar la ruta del disco persistente
-    logger.info(f"Usando ruta de ChromaDB desde CHROMADB_PATH_ON_RENDER: {db_path}")
-else:
-    db_path = os.path.abspath(CHROMA_DB_PATH_DEFAULT) # Fallback para desarrollo local
-    logger.info(f"CHROMADB_PATH_ON_RENDER no está configurada. Usando ruta local por defecto: {db_path}")
-
-# Asegúrate que el directorio exista (especialmente importante para el script de init)
 if not os.path.exists(db_path):
-    try:
-        os.makedirs(db_path)
-        logger.info(f"Directorio para ChromaDB creado en: {db_path}")
-    except OSError as e:
-        logger.error(f"Error CRÍTICO al crear el directorio para ChromaDB en {db_path}: {e}")
-        exit()
+    logger.error(f"Error CRÍTICO: El directorio de la base de datos '{db_path}' NO se encontró. "
+                 f"Asegúrate de que la carpeta '{CHROMA_DB_FOLDER_IN_REPO}' con la DB pre-construida "
+                 "esté en la raíz de tu repositorio GitHub y se haya clonado correctamente.")
+    exit()
+
+if not os.access(db_path, os.R_OK):
+    logger.error(f"Error CRÍTICO: No hay permisos de lectura para el directorio de la base de datos '{db_path}'.")
+    exit()
+
+logger.info(f"Directorio de la base de datos ChromaDB '{db_path}' encontrado y legible.")
+
+# Inicializar la función de embedding (debe ser la misma que se usó para crear la DB)
 embedding_fn = SentenceTransformerEmbeddingFunction(model_name="intfloat/multilingual-e5-base")
 logger.info(f"Usando embedding function en retrieval: {embedding_fn.model_name}")
 
-if not os.path.exists(db_path):
-    try:
-        os.makedirs(db_path)
-        logger.info(f"Directorio para ChromaDB creado en: {db_path}")
-    except OSError as e:
-        logger.error(f"Error CRÍTICO al crear el directorio para ChromaDB en {db_path}: {e}")
-        logger.error("Verifica los permisos de escritura en el directorio padre.")
-        exit() 
-
-logger.info(f"Usando cliente ChromaDB persistente en: {db_path}")
+# Inicializar el cliente ChromaDB para leer la base de datos existente
+logger.info(f"Intentando inicializar cliente ChromaDB persistente para leer desde: {db_path}")
+db_client = None
+collection = None
 try:
-    # Inicializa el cliente persistente apuntando al directorio especificado en db_path.
     db_client = chromadb.PersistentClient(path=db_path)
-except Exception as e:
-    logger.error(f"Error CRÍTICO al inicializar PersistentClient de ChromaDB en {db_path}: {e}", exc_info=True)
-    logger.error("Asegúrate de que ChromaDB esté instalado correctamente (`pip install chromadb`) y tengas permisos de escritura.")
-    exit() 
+    logger.info(f"Cliente ChromaDB inicializado correctamente desde '{db_path}'.")
 
-# Nombre de la colección donde están los datos de Saber Pro.
-collection_name = "preguntas_frecuentes_saberpro"
+    collection_name = "preguntas_frecuentes_saberpro"
 
-try:
     collection = db_client.get_or_create_collection(
-    name=collection_name,
-    embedding_function=embedding_fn
+        name=collection_name,
+        embedding_function=embedding_fn
     )
-    logger.info(f"Conectado/Obtenido colección ChromaDB: '{collection_name}'")
+    logger.info(f"Conectado a la colección ChromaDB existente: '{collection_name}'")
 
-    # Verifica cuántos documentos hay en la colección.
     count = collection.count()
     logger.info(f"La colección '{collection_name}' contiene {count} documentos.")
     if count == 0:
-        logger.error(f"¡ERROR GRAVE! La colección ChromaDB '{collection_name}' está vacía.")
-        logger.error(f"Debes EJECUTAR PRIMERO el script que carga los datos ('db_init.py')")
-        logger.error(f"Asegúrate de que ese script también use PersistentClient y apunte a la misma ruta: '{db_path}'")
-        logger.error("El chatbot no funcionará correctamente sin datos en la base de conocimiento.")
-        # exit()
+        logger.warning(f"ADVERTENCIA: La colección ChromaDB '{collection_name}' está vacía. "
+                       "Verifica que la base de datos en el repositorio esté completa y no corrupta.")
     else:
-         logger.info("Base de datos de conocimiento (ChromaDB) cargada y lista.")
+        logger.info("Base de datos de conocimiento (ChromaDB) cargada y lista desde el repositorio.")
 
+except chromadb.errors.CollectionNotDefinedError:
+    logger.error(f"Error CRÍTICO: La colección '{collection_name}' no se encontró en la base de datos en '{db_path}'. "
+                 "Asegúrate de que la base de datos subida al repositorio esté completa y contenga esta colección.")
+    exit()
 except Exception as e:
-    # Captura cualquier otro error al interactuar con la colección.
-    logger.error(f"Error al obtener/crear la colección ChromaDB '{collection_name}': {e}", exc_info=True)
+    logger.error(f"Error CRÍTICO durante la inicialización de ChromaDB o conexión a la colección '{collection_name}': {e}", exc_info=True)
+    logger.error("La aplicación no podrá funcionar correctamente sin la base de datos vectorial.")
     exit()
 
 # --- System Prompt (Instrucciones para el LLM) ---
