@@ -14,7 +14,7 @@
 body {
   margin: 0;
   font-family: var(--font-main);
-  background: url('/static/img/fondo2.png') no-repeat center center fixed;
+  background: url('/static/img/fondo.png') no-repeat center center fixed;
   background-size: cover;
   color: var(--color-text);
   display: flex;
@@ -243,6 +243,4 @@ body {
     --color-assistant: #065f46;
     --color-text: #f9fafb;
   }
-
-
 }

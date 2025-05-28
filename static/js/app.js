@@ -163,6 +163,5 @@ function displayMessage(text, role) {
     return lineDiv;
 }
 
-
 // --- Inicialización ---
 socket = openSocket("/init");
