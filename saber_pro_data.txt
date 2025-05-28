@@ -280,8 +280,7 @@ electrónico que ya no utilizo?
 ****************************************************************************************************
 Respuesta******************************************************************************************
  Debe radicar en la pagina del ICFES una PQRSDF indicando el problema. 
-(Link:https://www.icfes.gov.co/atencion-y-servicios-a-la-ciudadania/pqrsdf-y-otros
-tramites/)
+(Link:https://www.icfes.gov.co/atencion-y-servicios-a-la-ciudadania/pqrsdf-y-otrostramites/)
 ****************************************************************************************************
 
 34
@@ -360,8 +359,7 @@ SaberPro?
 ****************************************************************************************************
 Respuesta******************************************************************************************
 Primero revise la fecha establecida para la publicación de las citaciones, una vez 
-verificada puede ingresar al siguiente enlace (Link:https://citacion.icfes.edu.co/citacion
-web/pages/citacion/reportes/consultarCitacionIndividual.jsf#No-back-button)  
+verificada puede ingresar al siguiente enlace (Link:https://prisma.icfes.edu.co/prisma-web/pages/administracion/autenticacion/autenticacionIcfes.jsf?faces-redirect=true#No-back-button)  
 En este enlace encuentra el paso a paso: 
 (Link:https://www.youtube.com/watch?v=phZ0gIH12Uw) 
 ****************************************************************************************************
