@@ -14,8 +14,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: read #This is required for actions/checkout
-
+      contents: read
     steps:
       - uses: actions/checkout@v4
 
@@ -24,26 +23,14 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Create and start virtual environment
-        run: |
-          python -m venv venv
-          source venv/bin/activate
-      
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-        
-      # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
-
       - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
+        run: zip release.zip ./* -r 
 
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v4
         with:
           name: python-app
-          path: |
-            release.zip
-            !venv/
+          path: release.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -52,8 +39,8 @@ jobs:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
-      id-token: write #This is required for requesting the JWT
-      contents: read #This is required for actions/checkout
+      id-token: write
+      contents: read 
 
     steps:
       - name: Download artifact from build job
@@ -64,7 +51,6 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
 
-      
       - name: Login to Azure
         uses: azure/login@v2
         with:
@@ -73,9 +59,18 @@ jobs:
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_CCF7908513F24487ACD7F2AEE9673535 }}
 
       - name: 'Deploy to Azure Web App'
+
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
           app-name: 'Saber-Pro-Chat'
           slot-name: 'Production'
-          
+          package: '.'
+
+      # - name: Start Azure Web App
+      #   if: always() 
+      #   uses: azure/CLI@v1
+      #   with:
+      #     inlineScript: |
+      #       az webapp start --name 'Saber-Pro-Chat' --resource-group 'Saber-Pro-Chat'
+      #       echo "App Service 'Saber-Pro-Chat' started."
