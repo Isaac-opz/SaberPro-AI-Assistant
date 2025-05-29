@@ -150,5 +150,18 @@ function openSocket(url) {
     return currentSocket; // Retorna la instancia creada
 }
 
+function displayMessage(text, role) {
+    const lineDiv = document.createElement('div');
+    lineDiv.classList.add('line', role);
+    lineDiv.innerHTML = text.replace(/\n/g, "<br/>");
+    lines.appendChild(lineDiv);
+    lineDiv.style.opacity = 0;
+    setTimeout(() => {
+        lineDiv.style.opacity = 1;
+    }, 10);
+    scrollToBottom();
+    return lineDiv;
+}
+
 // --- Inicialización ---
 socket = openSocket("/init");
