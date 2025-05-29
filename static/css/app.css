@@ -56,18 +56,19 @@ body {
   word-wrap: break-word;
   position: relative;
   animation: fadeIn 0.4s ease;
+  border: 1px solid black; 
 }
 
 .line.user {
-  background-color: var(--color-user);
-  color: #0d47a1;
+  background-color: #f0f0f0;
+  color: #000000;
   float: right;
   border-bottom-right-radius: 4px;
 }
 
 .line.server {
-  background-color: var(--color-assistant);
-  color: #065f46;
+  background-color: #f0f0f0; 
+  color: #000000; 
   float: left;
   border-bottom-left-radius: 4px;
 }
@@ -239,8 +240,13 @@ body {
   :root {
     --color-bg: #111827;
     --color-white: #1f2937;
-    --color-user: #1e3a8a;
-    --color-assistant: #065f46;
-    --color-text: #f9fafb;
+    --color-user: #f8a0a0;
+    --color-assistant: #f8a0a0;
+    --color-text: #000000;
   }
+}
+
+#chatinput {
+  color: var(--color-text) !important;
+  caret-color: var(--color-text);
 }
