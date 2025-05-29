@@ -4,7 +4,15 @@ from fastapi.staticfiles import StaticFiles
 from google.generativeai import GenerativeModel, configure, types
 from websockets.exceptions import ConnectionClosed, ConnectionClosedOK
 from starlette.websockets import WebSocketState
-
+# para solucionar el error en azure respecto a sqlite3 en chromadb
+try:
+    __import__('pysqlite3')
+    import sys
+    sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+    print("SQLite version successfully overridden by pysqlite3.") # Log para confirmar
+except ImportError:
+    print("pysqlite3 not found, using system's sqlite3. This might cause issues with ChromaDB.")
+    pass
 import chromadb
 from chromadb.utils.embedding_functions import SentenceTransformerEmbeddingFunction
 import json
