@@ -4,17 +4,24 @@ from fastapi.staticfiles import StaticFiles
 from google.generativeai import GenerativeModel, configure, types
 from websockets.exceptions import ConnectionClosed, ConnectionClosedOK
 from starlette.websockets import WebSocketState
+import google.generativeai as genai
+from google.generativeai.types import content_types
+from google.generativeai import embed_content
+
+# IMPORTANTE: Importar la clase de función de embedding de ChromaDB
+from chromadb.utils.embedding_functions import GoogleGenerativeAiEmbeddingFunction # <--- ADD THIS LINE
+
 # para solucionar el error en azure respecto a sqlite3 en chromadb
-try:
-    __import__('pysqlite3')
-    import sys
-    sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
-    print("SQLite version successfully overridden by pysqlite3.") # Log para confirmar
-except ImportError:
-    print("pysqlite3 not found, using system's sqlite3. This might cause issues with ChromaDB.")
-    pass
+# try:
+#     __import__('pysqlite3')
+#     import sys
+#     sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+#     print("SQLite version successfully overridden by pysqlite3.") # Log para confirmar
+# except ImportError:
+#     print("pysqlite3 not found, using system's sqlite3. This might cause issues with ChromaDB.")
+#     pass
 import chromadb
-from chromadb.utils.embedding_functions import SentenceTransformerEmbeddingFunction
+# from chromadb.utils.embedding_functions import SentenceTransformerEmbeddingFunction
 import json
 import uvicorn
 import logging
@@ -55,9 +62,23 @@ if not os.access(db_path, os.R_OK):
 
 logger.info(f"Directorio de la base de datos ChromaDB '{db_path}' encontrado y legible.")
 
-# Inicializar la función de embedding (debe ser la misma que se usó para crear la DB)
-embedding_fn = SentenceTransformerEmbeddingFunction(model_name="intfloat/multilingual-e5-base")
-logger.info(f"Usando embedding function en retrieval: {embedding_fn.model_name}")
+# ELIMINA TU DEFINICIÓN DE google_embedding_function PERSONALIZADA AQUÍ <--- REMOVE THIS BLOCK
+# def google_embedding_function(input: list[str]) -> list[list[float]]:
+#     """Genera embeddings usando Google Gemini embeddings ('models/embedding-001')."""
+#     if not isinstance(input, list):
+#         input = [input]
+#     return [
+#         embed_content(model="models/embedding-001", content=t, task_type="retrieval_query")["embedding"]
+#         for t in input
+#     ]
+
+# USA LA FUNCIÓN DE EMBEDDING PROPORCIONADA POR CHROMADB
+embedding_fn = GoogleGenerativeAiEmbeddingFunction( # <--- USE THIS
+    api_key=GOOGLE_API_KEY, # Pass the API key here
+    model_name="models/embedding-001"
+)
+logger.info(f"Usando función de embeddings de Google Gemini (via ChromaDB helper): {embedding_fn.model_name}")
+
 
 # Inicializar el cliente ChromaDB para leer la base de datos existente
 logger.info(f"Intentando inicializar cliente ChromaDB persistente para leer desde: {db_path}")
@@ -71,7 +92,7 @@ try:
 
     collection = db_client.get_or_create_collection(
         name=collection_name,
-        embedding_function=embedding_fn
+        embedding_function=embedding_fn # Pasa la instancia de la función de embedding oficial
     )
     logger.info(f"Conectado a la colección ChromaDB existente: '{collection_name}'")
 
@@ -83,10 +104,6 @@ try:
     else:
         logger.info("Base de datos de conocimiento (ChromaDB) cargada y lista desde el repositorio.")
 
-except chromadb.errors.CollectionNotDefinedError:
-    logger.error(f"Error CRÍTICO: La colección '{collection_name}' no se encontró en la base de datos en '{db_path}'. "
-                 "Asegúrate de que la base de datos subida al repositorio esté completa y contenga esta colección.")
-    exit()
 except Exception as e:
     logger.error(f"Error CRÍTICO durante la inicialización de ChromaDB o conexión a la colección '{collection_name}': {e}", exc_info=True)
     logger.error("La aplicación no podrá funcionar correctamente sin la base de datos vectorial.")
@@ -107,6 +124,7 @@ Eres un asistente virtual experto en responder preguntas sobre las pruebas Saber
 10. Si la pregunta del usuario no está relacionada con las pruebas Saber Pro o con temas oficiales del ICFES, responde educadamente que esa consulta no pertenece a tu área de especialización y que estás diseñado únicamente para brindar asistencia sobre los exámenes Saber Pro del ICFES.
 11. Si el contexto contiene un enlace indicado dentro de paréntesis y precedido por el texto exacto Link:, extrae y devuelve únicamente la URL completa que aparece inmediatamente después de Link: dentro del paréntesis, sin incluir el texto Link: ni los paréntesis.
 12. Si el contexto menciona un enlace, asegúrate de que esté bien formateado y sea funcional.
+13. Siempre que se te pida proporcionar un enlace o una URL, asegúrate de formatearlo en Markdown de manera que sea clicable directamente. Por ejemplo, si el enlace es https://www.ejemplo.com y el texto que lo describe es Este es un ejemplo, deberás devolverlo como [Este es un ejemplo](https://www.ejemplo.com). Esto permitirá al usuario hacer clic directamente en el enlace sin necesidad de copiar y pegar.
 
 A continuación se presenta el contexto relevante recuperado de la base de datos para la consulta actual:
 """
@@ -211,7 +229,7 @@ async def init_websocket_endpoint( websocket: WebSocket ):
         await safe_send_json(websocket, {"action": "error", "message": "Error en el formato del mensaje recibido."})
     except Exception as e:
         # Captura cualquier otra excepción durante el ciclo while.
-        logger.error(f"Error inesperado en el bucle principal del WebSocket: {type(e).__name__} - {e}", exc_info=True) 
+        logger.error(f"Error inesperado en el bucle principal del WebSocket: {type(e).__name__} - {e}", exc_info=True)
         # Intentar notificar al cliente si es posible.
         await safe_send_json(websocket, {"action": "error", "message": f"Ocurrió un error inesperado en el servidor: {type(e).__name__}"})
 
@@ -249,13 +267,13 @@ async def process_messages( messages: list, websocket: WebSocket, system_prompt:
     # --- 1. Recuperación (Retrieve) ---
     contexto_recuperado = "No se encontró información relevante en la base de datos para esta consulta." # Valor por defecto.
     retrieved_docs = [] # Inicializar lista de documentos recuperados.
-    # retrieved_ids = [] 
+    # retrieved_ids = []
     retrieved_distances = [] # Inicializar lista de Distancias
 
     try:
         # Consulta a ChromaDB para encontrar los fragmentos más similares al mensaje del usuario.
         results = collection.query(
-            query_texts=[f"query: {last_user_message}"],
+            query_texts=[last_user_message], # Pass the user message directly
             n_results=2,
             include=["documents", "distances"]
         )
@@ -334,7 +352,7 @@ async def process_messages( messages: list, websocket: WebSocket, system_prompt:
     # --- 3. Generación (Generate) ---
     try:
         chat = model.start_chat(history=[])
-        
+
         response = chat.send_message(
             final_system_prompt + "\n\n" + last_user_message,
             stream=True,

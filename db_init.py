@@ -1,14 +1,22 @@
 import chromadb
 import os
 import logging
-from chromadb.utils.embedding_functions import SentenceTransformerEmbeddingFunction
+# from chromadb.utils.embedding_functions import SentenceTransformerEmbeddingFunction
+from chromadb.utils.embedding_functions import GoogleGenerativeAiEmbeddingFunction
+from dotenv import load_dotenv
+load_dotenv()
+
+
 
 # --- Configuración de Logging ---
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
 # --- Configuración de Embedding Function ---
-embedding_fn = SentenceTransformerEmbeddingFunction(model_name="intfloat/multilingual-e5-base")
+# embedding_fn = SentenceTransformerEmbeddingFunction(model_name="intfloat/multilingual-e5-base")
+embedding_fn = GoogleGenerativeAiEmbeddingFunction(
+    model_name="models/embedding-001"
+)
 logger.info(f"Usando modelo de embedding: {embedding_fn.model_name}")
 
 # --- 1. Carga y Preparación de Datos desde Archivo ---

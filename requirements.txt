@@ -6,4 +6,5 @@ sentence-transformers
 google-generativeai
 python-dotenv
 websockets
+google-auth
 pysqlite3-binary
