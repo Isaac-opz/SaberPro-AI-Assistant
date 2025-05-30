@@ -19,7 +19,7 @@ Pregunta************************************************************************
 ¿qué debo hacer para presentar las pruebas icfes por segunda vez?
 ****************************************************************************************************
 Respuesta******************************************************************************************
-Se puede registrar las veces que desee, después de la quinta inscripción la tarifa aumenta, validar en  la página www.icfes.gov.co / Evaluaciones y Elija el examen de su interés. 
+Se puede registrar las veces que desee, después de la quinta inscripción la tarifa aumenta, validar en  la página (Link:www.icfes.gov.co) En evaluaciones y Elija el examen de su interés. 
 ****************************************************************************************************
 
 4
@@ -35,7 +35,7 @@ Pregunta************************************************************************
 ¿Debo pagar las pruebas TyT?
 ****************************************************************************************************
 Respuesta******************************************************************************************
-Valida las tarifas en la página www.icfes.gov.co / Evaluaciones / Saber TyT / Tarifas. (Link:https://www.icfes.gov.co/evaluaciones-icfes/examen-saber-tyt/ y busca tarifaas) 
+Valida las tarifas en la página www.icfes.gov.co / Evaluaciones / Saber TyT / Tarifas. (Link:https://www.icfes.gov.co/evaluaciones-icfes/examen-saber-tyt/) y busca tarifaas
 ****************************************************************************************************
 
 6
@@ -222,7 +222,7 @@ realizar la inscripción?
 ****************************************************************************************************
 Respuesta******************************************************************************************
 Si, en el siguiente video puede encontrar un paso a paso diseñado por el ICFES 
-para realizar el proceso de inscripción y pago. (Link:https://youtu.be/sei3LpQ0n4E?si=VHcB2Srh4Z6N6ZR-)
+para realizar el proceso de inscripción y pago. (Link:https://youtube/sei3LpQ0n4E?si=VHcB2Srh4Z6N6ZR)
 ****************************************************************************************************
 
 28
@@ -419,5 +419,5 @@ Cómo me inscribo a las pruebas?
 ****************************************************************************************************
 Respuesta******************************************************************************************
 En el siguiente video puede encontrar un paso a paso diseñado por el ICFES 
-para realizar el proceso de inscripción y pago. (Link:https://youtu.be/sei3LpQ0n4E?si=VHcB2Srh4Z6N6ZR-)
+para realizar el proceso de inscripción y pago. (Link:https://youtube/sei3LpQ0n4E?si=VHcB2Srh4Z6N6ZR)
 ****************************************************************************************************
