@@ -26,7 +26,7 @@ body {
 #main {
   width: 100%;
   max-width: 800px;
-  height: 100vh;
+  height: calc(100vh - 72px);
   display: flex;
   flex-direction: column;
   background-color: rgba(255, 255, 255, 0.9);
@@ -34,7 +34,10 @@ body {
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  border: 4px solid black;
+  margin-top: 72px;
 }
+
 
 #linescontainer {
   flex-grow: 1;
@@ -301,11 +304,3 @@ body {
   color: #ffffff;
 }
 
-.chat-wrapper {
-  background-color: #000;
-  padding: 24px;
-  display: flex;
-  justify-content: center;
-  box-sizing: border-box;
-  min-height: calc(100vh - 72px);
-}
